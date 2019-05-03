@@ -31,10 +31,16 @@ function numberInit(dCount, date, day) {
 function setBackgroundColor(date, tdObj) {
   if(date == tdObj.childNodes[0].nodeValue) {
     tdObj.style.backgroundColor = "#96e3ff";
+    tdObj.ondblclick = function(){
+      alert("The today was double-clicked.");
+    }
   }else if(date > tdObj.childNodes[0].nodeValue){
     tdObj.style.backgroundColor = "#e3e4ea";
   }else {
     tdObj.style.backgroundColor = "#d9e8ce";
+    tdObj.ondblclick = function(){
+      alert("The future was double-clicked.");
+    }
   }
 }
 
