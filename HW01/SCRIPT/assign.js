@@ -13,7 +13,7 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 }
-
+/*year.setAttribute(id, day); 이렇게 id를 부여가능*/
 
 function initSetting() {
     let dateObj = new Date();
@@ -46,24 +46,25 @@ function numberInit(dCount, date, day) {
 function setBackgroundColor(date, tdObj) {
     var objNodeValue = tdObj.childNodes[0].nodeValue;
     if (date == objNodeValue) {
-        tdObj.style.backgroundColor = "#96e3ff";
-        tdObj.ondblclick = function () {
-            modal.style.display ="block";
-            document.getElementById("scheduleText").innerHTML = objNodeValue+"日 일정추가";
-        }
+        addSetDate(tdObj, objNodeValue, "#96e3ff");
     } else if (date > objNodeValue) {
         tdObj.style.backgroundColor = "#e3e4ea";
     } else {
-        tdObj.style.backgroundColor = "#d9e8ce";
-        tdObj.ondblclick = function () {
-            document.getElementById("scheduleText").innerHTML = objNodeValue+"日 일정추가";
-            modal.style.display ="block";
-            btuAdd.onclick = function(){
-                var inputText = document.getElementById("txtField").value;
-                var para = document.createElement("p");
-                para.appendChild(document.createTextNode(inputText));
-                tdObj.appendChild(para);
-            }
+        addSetDate(tdObj, objNodeValue, "#d9e8ce");
+    }
+}
+
+function addSetDate(tdObj, objNodeValue, color) {
+    tdObj.style.backgroundColor = color;
+    tdObj.ondblclick = function () {
+        modal.style.display ="block";
+        document.getElementById("scheduleText").innerHTML = objNodeValue+"日 일정추가";
+        btuAdd.onclick = function(){
+            var inputText = document.getElementById("txtField").value;
+            modal.style.display = "none";
+            var para = document.createElement("p");
+            para.appendChild(document.createTextNode(inputText));
+            tdObj.appendChild(para);
         }
     }
 }
