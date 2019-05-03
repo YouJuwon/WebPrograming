@@ -36,6 +36,7 @@ function numberInit(dCount, date, day) {
             else {
                 tdObj = firstLine.item(j);
                 tdObj.innerHTML = count;
+                tdObj.setAttribute("id", "day"+count);
                 count++;
                 setBackgroundColor(date, tdObj);
             }
@@ -58,12 +59,14 @@ function addSetDate(tdObj, objNodeValue, color) {
     tdObj.style.backgroundColor = color;
     tdObj.ondblclick = function () {
         modal.style.display ="block";
-        document.getElementById("scheduleText").innerHTML = objNodeValue+"日 일정추가";
+        document.getElementById("scheduleText").innerHTML = objNodeValue + "日 일정추가";
         btuAdd.onclick = function(){
             var inputText = document.getElementById("txtField").value;
             modal.style.display = "none";
             var para = document.createElement("p");
             para.appendChild(document.createTextNode(inputText));
+            para.setAttribute("class", "schedule");
+            console.log(para);//test
             tdObj.appendChild(para);
         }
     }
