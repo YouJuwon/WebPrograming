@@ -1,7 +1,8 @@
 initSetting();
 
 var modal = document.getElementById('scheduleModal');
-var btuClose = document.getElementsByClassName("close")[0];
+var btuClose = document.getElementById("close");
+var btuAdd = document.getElementById("add");
 
 btuClose.onclick = function () {
     modal.style.display = "none";
@@ -55,8 +56,14 @@ function setBackgroundColor(date, tdObj) {
     } else {
         tdObj.style.backgroundColor = "#d9e8ce";
         tdObj.ondblclick = function () {
-            modal.style.display ="block";
             document.getElementById("scheduleText").innerHTML = objNodeValue+"日 일정추가";
+            modal.style.display ="block";
+            btuAdd.onclick = function(){
+                var inputText = document.getElementById("txtField").value;
+                var para = document.createElement("p");
+                para.appendChild(document.createTextNode(inputText));
+                tdObj.appendChild(para);
+            }
         }
     }
 }
