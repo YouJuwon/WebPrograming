@@ -43,18 +43,20 @@ function numberInit(dCount, date, day) {
 }
 
 function setBackgroundColor(date, tdObj) {
-    if (date == tdObj.childNodes[0].nodeValue) {
+    var objNodeValue = tdObj.childNodes[0].nodeValue;
+    if (date == objNodeValue) {
         tdObj.style.backgroundColor = "#96e3ff";
         tdObj.ondblclick = function () {
-            alert("The today was double-clicked.");
+            modal.style.display ="block";
+            document.getElementById("scheduleText").innerHTML = objNodeValue+"日 일정추가";
         }
-    } else if (date > tdObj.childNodes[0].nodeValue) {
+    } else if (date > objNodeValue) {
         tdObj.style.backgroundColor = "#e3e4ea";
     } else {
         tdObj.style.backgroundColor = "#d9e8ce";
         tdObj.ondblclick = function () {
-            alert("The future was double-clicked.");
-            modal.style.display ="block";//test
+            modal.style.display ="block";
+            document.getElementById("scheduleText").innerHTML = objNodeValue+"日 일정추가";
         }
     }
 }
