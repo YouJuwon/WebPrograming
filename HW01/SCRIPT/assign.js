@@ -6,19 +6,23 @@ function initSetting() {
   let month = dateObj.getMonth() + 1;
   let date = dateObj.getDate();
   let day =  new Date(year+'-'+month+'-'+1).getDay();
-
-  var calBody = document.getElementById("calBody").getElementsByTagName("tr");
+  let dayCount = daysCount(year, month);
 
   document.getElementById("calendarDate").innerHTML = year + '年 ' +month + '月';
 
-  for (var i=0, count = 1, firstLine; i<6 && count <= daysCount(year, month) ; i++){
+  var calBody = document.getElementById("calBody").getElementsByTagName("tr");
 
+  numberInit(calBody, dayCount, date);
+
+}
+
+function numberInit(calBody, dayCount, date) {
+  for (var i=0, count = 1, firstLine; i<6 && count <= dayCount ; i++){
     firstLine = calBody.item(i).getElementsByTagName("td");
-    for(var j=0; j<7 && count <= daysCount(year, month); j++) {
-
+    for(var j=0, tdObj; j<7 && count <= daysCount; j++) {
       if(day > 0) day -= 1;
       else {
-        var tdObj = firstLine.item(j);
+        tdObj = firstLine.item(j);
         tdObj.innerHTML = count;
         count++;
         setBackgroundColor(date,tdObj);
@@ -26,6 +30,7 @@ function initSetting() {
     }
   }
 }
+
 function setBackgroundColor(date, tdObj) {
   if(date == tdObj.childNodes[0].nodeValue) {
     tdObj.style.backgroundColor = "#96e3ff";
