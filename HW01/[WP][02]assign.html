@@ -2,18 +2,30 @@
 <html lang="kr" dir="ltr">
 
 <head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="./CSS/assign.css">
-  <title>Calendar</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="./CSS/assign.css">
+    <title>Calendar</title>
 </head>
 
 <body>
-  <table id="calendar">
+
+<div id="scheduleModal" class="modal">
+    <div class="modal-content">
+        <p>日 일정추가</p>
+        <input type="text">
+        </br>
+        <input type="submit" value="Add" class="add">
+        <input type="button" value="Cancel" class="close">
+    </div>
+</div>
+
+
+<table id="calendar">
     <thead>
-      <tr>
+    <tr>
         <th colspan="7" id="calendarDate"></th>
-      </tr>
-      <tr>
+    </tr>
+    <tr>
         <th id="sun">日</th>
         <th>月</th>
         <th>火</th>
@@ -21,10 +33,10 @@
         <th>木</th>
         <th>金</th>
         <th id="sat">土</th>
-      </tr>
+    </tr>
     </thead>
     <tbody id="calBody">
-      <tr>
+    <tr>
         <td></td>
         <td></td>
         <td></td>
@@ -32,8 +44,8 @@
         <td></td>
         <td></td>
         <td></td>
-      </tr>
-      <tr>
+    </tr>
+    <tr>
         <td></td>
         <td></td>
         <td></td>
@@ -41,8 +53,8 @@
         <td></td>
         <td></td>
         <td></td>
-      </tr>
-      <tr>
+    </tr>
+    <tr>
         <td></td>
         <td></td>
         <td></td>
@@ -50,8 +62,8 @@
         <td></td>
         <td></td>
         <td></td>
-      </tr>
-      <tr>
+    </tr>
+    <tr>
         <td></td>
         <td></td>
         <td></td>
@@ -59,8 +71,8 @@
         <td></td>
         <td></td>
         <td></td>
-      </tr>
-      <tr>
+    </tr>
+    <tr>
         <td></td>
         <td></td>
         <td></td>
@@ -68,8 +80,8 @@
         <td></td>
         <td></td>
         <td></td>
-      </tr>
-      <tr>
+    </tr>
+    <tr>
         <td></td>
         <td></td>
         <td></td>
@@ -77,11 +89,11 @@
         <td></td>
         <td></td>
         <td></td>
-      </tr>
+    </tr>
     </tbody>
-  </table>
-  <script src="./SCRIPT/assign.js">
-  </script>
+</table>
+<script src="./SCRIPT/assign.js">
+</script>
 </body>
 
 </html>
