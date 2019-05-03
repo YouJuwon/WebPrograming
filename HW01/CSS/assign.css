@@ -1,0 +1,30 @@
+#calendarDate {
+  font-weight: bold;
+}
+#sun{
+  color:Red;
+}
+#sat{
+  color:Blue;
+}
+
+table{
+  font-size: 15px;
+  border-collapse:collapse;
+  text-align: center;
+}
+th{
+  text-align: center;
+  border: 1px solid black;
+  border-collapse:collapse;
+  width: 90px;
+  height: 90px;
+}
+td{
+  vertical-align: top;
+  text-align: left;
+  border: 1px solid black;
+  border-collapse:collapse;
+  width: 90px;
+  height: 90px;
+}
