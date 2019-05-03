@@ -61,12 +61,14 @@ function addSetDate(tdObj, objNodeValue, color) {
         modal.style.display ="block";
         document.getElementById("scheduleText").innerHTML = objNodeValue + "日 일정추가";
         btuAdd.onclick = function(){
-            var inputText = document.getElementById("txtField").value;
             modal.style.display = "none";
+            var inputText = document.getElementById("txtField").value;
             var para = document.createElement("p");
             para.appendChild(document.createTextNode(inputText));
             para.setAttribute("class", "schedule");
-            console.log(para);//test
+            var btuX = document.createElement("button");
+            btuX.setAttribute("value", "x");
+            para.appendChild(btuX);
             tdObj.appendChild(para);
         }
     }
