@@ -21,6 +21,7 @@ th{
   height: 90px;
 }
 td{
+  font-style: italic;
   vertical-align: top;
   text-align: left;
   border: 1px solid black;
