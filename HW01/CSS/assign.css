@@ -9,6 +9,13 @@
 #sat {
     color: Blue;
 }
+
+.xButton{
+    border: hidden;
+    margin-left: 50%;
+    text-align: right;
+}
+
 .schedule{
     border: 1px solid black;
     background-color: lightgray;
@@ -16,6 +23,29 @@
     margin-top: 2px;
     margin-bottom: 2px;
     width: 85%;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 40px;
+    border: 1px solid #888;
+    width: 20%; /* Could be more or less, depending on screen size */
 }
 
 table {
@@ -40,27 +70,4 @@ td {
     border-collapse: collapse;
     width: 90px;
     height: 90px;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #ffffff;
-    padding: 40px;
-    border: 1px solid #888;
-    width: 20%; /* Could be more or less, depending on screen size */
 }
