@@ -66,9 +66,9 @@ function addSetDate(tdObj, objNodeValue, color) {
 }
 
 function tdDbclick(tdObj, objNodeValue) {
-    scheduleModal.style.display ="block";
+    scheduleModal.style.display = "block";
     document.getElementById("scheduleText").innerHTML = objNodeValue + "日 일정추가";
-    document.getElementById("add").onclick = function(){
+    document.getElementById("add").onclick = function () {
         scheduleModal.style.display = "none";
         tdObj.appendChild(addSchedule());
         document.getElementById("txtField").value = "";
@@ -82,7 +82,7 @@ function addSchedule() {
     return makeP(makeOutputText(inputText), makeButton());
 }
 
-function makeP(outputText, btuX){
+function makeP(outputText, btuX) {
     var para = document.createElement("p");
     para.setAttribute("class", "schedule");
     para.appendChild(outputText);
@@ -95,7 +95,7 @@ function makeButton() {
     var btuX = document.createElement("button");
     btuX.setAttribute("class", "xButton");
     btuX.innerHTML = 'x';
-    btuX.onclick = function(){
+    btuX.onclick = function () {
         modifySchedule(btuX);
     }
 
@@ -106,9 +106,9 @@ function modifySchedule(butX) {
     var ancestor = butX.parentNode.parentNode;
     var obj = document.getElementById(ancestor.id);
     var order;
-    var length =obj.childNodes.length-1;
-    for (var i=0; i <= length; i++){
-        if (obj.childNodes[i] ==butX.parentNode) order = i;
+    var length = obj.childNodes.length - 1;
+    for (var i = 0; i <= length; i++) {
+        if (obj.childNodes[i] == butX.parentNode) order = i;
     }
     var modifyDate = document.getElementById("modifyDate");
     var mOrder = document.getElementById("modifyOrder");
@@ -116,26 +116,30 @@ function modifySchedule(butX) {
     mOrder.setAttribute("max", length.toString());
     mOrder.value = order;
     var d = new Date();
-    modifyDate.value= [    d.getFullYear(),
-            ('0' + (d.getMonth() + 1)).slice(-2),
-            ('0' + ancestor.id).slice(-2)
-        ].join('-');
+    modifyDate.value = [d.getFullYear(),
+        ('0' + (d.getMonth() + 1)).slice(-2),
+        ('0' + ancestor.id).slice(-2)
+    ].join('-');
     modifyModal.style.display = "block";
-
     modifyDate.onchange = function () {
         var modifyDay = ((this.value.split("-"))[2]);
         if (modifyDay < 10) modifyDay = modifyDay.split("0")[1];
         if (modifyDay != ancestor.id) mOrder.disabled = true;
         else mOrder.disabled = false;
-        document.getElementById("save").onclick = function(){
-            if (modifyDay != ancestor.id) document.getElementById(modifyDay).appendChild(butX.parentNode);
-            modifyModal.style.display = "none";
+        document.getElementById("save").onclick = function () {
+            var modifyMonth = (modifyDate.value.split("-"))[1];
+            if (modifyMonth == (new Date().getMonth()+1)) {
+                if (modifyDay < new Date().getDate()) alert("지난 날로 이동이 불가능합니다.");
+                else if(modifyDay != ancestor.id) document.getElementById(modifyDay).appendChild(butX.parentNode);
+                modifyModal.style.display = "none";
+            }else {
+                alert("이번달이 아닌 달로는 이동이 불가능합니다.");
+            }
         }
     }
-    mOrder.onchange = function(){
+    mOrder.onchange = function () {
         var changeOrder = parseInt(mOrder.value);
         document.getElementById("save").onclick = function () {
-            console.log(order, changeOrder, obj.childNodes);//test
             if (order != changeOrder) {
                 var tempChild = obj.childNodes[order];
                 obj.removeChild(obj.childNodes[order]);
@@ -145,7 +149,6 @@ function modifySchedule(butX) {
             modifyModal.style.display = "none";
         }
     }
-
 
 
     document.getElementById("delete").onclick = function () {
@@ -158,7 +161,7 @@ function makeOutputText(inputText) {
     var outputText = document.createElement("input")
     outputText.setAttribute("class", "outputText");
     outputText.setAttribute("type", "text");
-    outputText.value= inputText;
+    outputText.value = inputText;
 
     return outputText;
 }
