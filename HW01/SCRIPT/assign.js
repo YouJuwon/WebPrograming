@@ -13,6 +13,10 @@ window.onclick = function (event) {
     }
 }
 
+function addClose() {
+    scheduleModal.style.display = "none";
+}
+
 function initSetting() {
     let dateObj = new Date();
     let year = dateObj.getFullYear();
@@ -71,10 +75,6 @@ function tdDbclick(tdObj, objNodeValue) {
     document.getElementById("close").onclick = addClose;
 }
 
-function addClose() {
-    scheduleModal.style.display = "none";
-}
-
 function addSchedule() {
     var inputText = document.getElementById("txtField").value;
 
@@ -102,9 +102,9 @@ function makeButton() {
 }
 
 function modifySchedule(btuX) {
+    document.getElementById("modifyDate").valueAsDate = new Date();
     modifyModal.style.display = "block";
-    var btuDel = document.getElementById("delete");
-    btuDel.onclick = function () {
+    document.getElementById("delete").onclick = function () {
         btuX.parentNode.parentNode.removeChild(btuX.parentNode);
         modifyModal.style.display = "none";
     }
