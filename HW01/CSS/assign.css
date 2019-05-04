@@ -10,6 +10,33 @@
     color: Blue;
 }
 
+#modal-add {
+    text-align: center;
+    vertical-align: 0px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 40px;
+    border: 1px solid #888;
+    width: 300px;
+}
+
+#modal-modify {
+    font-family: bold;
+    text-align: center;
+    vertical-align: 0px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 40px;
+    border: 1px solid #888;
+    width: 300px;
+}
+
 .xButton{
     border: hidden;
 }
@@ -28,7 +55,7 @@
     background-color: lightgray;
     margin-left: 4px;
     margin-right: 2px;
-    width: 80px;
+    width: 70px;
 }
 
 .modal {
@@ -41,17 +68,6 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #ffffff;
-    padding: 40px;
-    border: 1px solid #888;
-    width: 20%;
 }
 
 table {
