@@ -112,6 +112,7 @@ function modifySchedule(butX) {
     }
     var modifyDate = document.getElementById("modifyDate");
     var mOrder = document.getElementById("modifyOrder");
+    mOrder.disabled = false;
     mOrder.setAttribute("max", length.toString());
     mOrder.value = order;
     var d = new Date();
@@ -124,6 +125,8 @@ function modifySchedule(butX) {
     modifyDate.onchange = function () {
         var modifyDay = ((this.value.split("-"))[2]);
         if (modifyDay < 10) modifyDay = modifyDay.split("0")[1];
+        if (modifyDay != ancestor.id) mOrder.disabled = true;
+        else mOrder.disabled = false;
         document.getElementById("save").onclick = function(){
             if (modifyDay != ancestor.id) document.getElementById(modifyDay).appendChild(butX.parentNode);
             modifyModal.style.display = "none";
