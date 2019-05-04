@@ -24,7 +24,9 @@
 }
 
 .outputText{
-    margin-left: 2px;
+    border: hidden;
+    background-color: lightgray;
+    margin-left: 4px;
     margin-right: 2px;
     width: 80px;
 }
