@@ -110,18 +110,17 @@ function modifySchedule(butX) {
     modifyDate.valueAsDate = mdate;
     modifyModal.style.display = "block";
     var mOrder = document.getElementById("modifyOrder");
+    var modifyDay;
     mOrder.setAttribute("value", order+1);
-
+    modifyDate.onchange = function () {
+        modifyDay = ((this.value.split("-"))[2]);
+        if (modifyDay < 10) modifyDay = modifyDay.split("0")[1];
+        console.log(this.value, modifyDay, document.getElementById(modifyDay));
+    }
     document.getElementById("save").onclick = function(){
-        var modifyDay;
+        document.getElementById(modifyDay).appendChild(butX.parentNode);
         modifyModal.style.display = "none";
-        modifyDate.onchange = function () {
-            modifyDay = ((this.value.split("-"))[2]);
-            if (modifyDay < 10) modifyDay = modifyDay.split("0")[1];
-            console.log(this.value, modifyDay, document.getElementById(modifyDay));
-            document.getElementById(modifyDay).appendChild(butX.parentNode);
-            //document.getElementById(modifyDay).getElementsByTagName("td")[0].appendChild(butX.parentNode);
-        }
+
 
     }
 
