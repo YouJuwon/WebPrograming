@@ -110,13 +110,15 @@ function modifySchedule(butX) {
     for (var i=0; i <= length; i++){
         if (obj.childNodes[i] ==butX.parentNode) order = i;
     }
-    var mdate = new Date();
-    mdate.setDate(ancestor.id);
     var modifyDate = document.getElementById("modifyDate");
     var mOrder = document.getElementById("modifyOrder");
     mOrder.setAttribute("max", length.toString());
     mOrder.value = order;
-    modifyDate.valueAsDate = mdate;
+    var d = new Date();
+    modifyDate.value= [    d.getFullYear(),
+            ('0' + (d.getMonth() + 1)).slice(-2),
+            ('0' + ancestor.id).slice(-2)
+        ].join('-');
     modifyModal.style.display = "block";
 
     modifyDate.onchange = function () {
