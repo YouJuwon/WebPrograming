@@ -57,17 +57,26 @@ function setBackgroundColor(date, tdObj) {
 
 function addSetDate(tdObj, objNodeValue, color) {
     tdObj.style.backgroundColor = color;
+
     tdObj.ondblclick = function () {
         modal.style.display ="block";
         document.getElementById("scheduleText").innerHTML = objNodeValue + "日 일정추가";
+
         btuAdd.onclick = function(){
             modal.style.display = "none";
             var inputText = document.getElementById("txtField").value;
             var para = document.createElement("p");
-            para.appendChild(document.createTextNode(inputText));
+            var outputText = document.createElement("input")
+            outputText.setAttribute("type", "text");
+            outputText.setAttribute("class", "outputText");
+            outputText.innerHTML = inputText;
+            para.appendChild(outputText);
+            console.log(outputText);//test
             para.setAttribute("class", "schedule");
             var btuX = document.createElement("button");
-            btuX.setAttribute("value", "x");
+            btuX.setAttribute("class", "xButton");
+            btuX.innerHTML = 'x';
+
             para.appendChild(btuX);
             tdObj.appendChild(para);
         }
