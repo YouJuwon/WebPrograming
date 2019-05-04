@@ -6,7 +6,7 @@ var modifyModal = document.getElementById('modifyModal');
 
 window.onclick = function (event) {
     if (event.target == scheduleModal) {
-        scheduleModal.style.display = "none";
+        addClose();
     }
     if (event.target == modifyModal) {
         modifyModal.style.display = "none";
@@ -58,19 +58,19 @@ function addSetDate(tdObj, objNodeValue, color) {
     tdObj.style.backgroundColor = color;
 
     tdObj.ondblclick = function () {
-        var btuAdd = document.getElementById("add");
-        var btuClose = document.getElementById("close");
         scheduleModal.style.display ="block";
         document.getElementById("scheduleText").innerHTML = objNodeValue + "日 일정추가";
 
-        btuAdd.onclick = function(){
+        document.getElementById("add").onclick = function(){
             scheduleModal.style.display = "none";
             tdObj.appendChild(addSchedule());
         }
-        btuClose.onclick = function () {
-            scheduleModal.style.display = "none";
-        }
+        document.getElementById("close").onclick = addClose;
     }
+}
+
+function addClose() {
+    scheduleModal.style.display = "none";
 }
 
 function addSchedule() {
