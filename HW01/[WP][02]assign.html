@@ -10,18 +10,21 @@
 <body>
 
 <div id="modifyModal" class="modal">
-    <div id="modal-add">
-        <p>일정 날짜 변경: <input type="date" id = "modifyDate"></p>
-        <p>일정 순서 변경: <input type="number" min="1" id = "modifyOrder"></p>
-        <input type="button" value="Save" id="save">
-        <input type="button" value="Delete" id="delete">
+    <div id="modal-modify">
+        <p align="center">일정 변경</p>
+        <p class ="modify">일정 날짜 변경: <input type="date" id="modifyDate"></p>
+        <p class ="modify">일정 순서 변경: <input type="number" min="1" id="modifyOrder"></p>
+        <p id = buttonModify>
+            <input type="button" value="Save" id="save">
+            <input type="button" value="Delete" id="delete">
+        </p>
     </div>
 </div>
 
 <div id="scheduleModal" class="modal">
-    <div id="modal-modify">
+    <div id="modal-add">
         <p id="scheduleText">日 일정추가</p>
-        <input type="text" autofocus id = "txtField">
+        <input type="text" autofocus id="txtField">
         </br>
         <input type="button" value="Add" id="add">
         <input type="button" value="Cancel" id="close">
