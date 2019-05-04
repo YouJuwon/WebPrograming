@@ -1,16 +1,20 @@
 initSetting();
 
-var modal = document.getElementById('scheduleModal');
+var scheduleModal = document.getElementById('scheduleModal');
+var modifyModal = document.getElementById('modifyModal');
 var btuClose = document.getElementById("close");
-var btuAdd = document.getElementById("add");
 
-btuClose.onclick = function () {
-    modal.style.display = "none";
+
+btuClose.onclick = function (event) {
+        scheduleModal.style.display = "none";
 }
 
 window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+    if (event.target == scheduleModal) {
+        scheduleModal.style.display = "none";
+    }
+    if (event.target == modifyModal) {
+        modifyModal.style.display = "none";
     }
 }
 /*year.setAttribute(id, day); 이렇게 id를 부여가능*/
@@ -59,11 +63,12 @@ function addSetDate(tdObj, objNodeValue, color) {
     tdObj.style.backgroundColor = color;
 
     tdObj.ondblclick = function () {
-        modal.style.display ="block";
+        var btuAdd = document.getElementById("add");
+        scheduleModal.style.display ="block";
         document.getElementById("scheduleText").innerHTML = objNodeValue + "日 일정추가";
 
         btuAdd.onclick = function(){
-            modal.style.display = "none";
+            scheduleModal.style.display = "none";
             tdObj.appendChild(addSchedule());
         }
     }
@@ -88,11 +93,20 @@ function makeButton() {
     var btuX = document.createElement("button");
     btuX.setAttribute("class", "xButton");
     btuX.innerHTML = 'x';
-    btuX.onclick = function () {
-        btuX.parentNode.parentNode.removeChild(btuX.parentNode);
+    btuX.onclick = function(){
+        modifySchedule(btuX);
     }
 
     return btuX;
+}
+
+function modifySchedule(btuX) {
+    modifyModal.style.display = "block";
+    var btuDel = document.getElementById("delete");
+    btuDel.onclick = function () {
+        btuX.parentNode.parentNode.removeChild(btuX.parentNode);
+        modifyModal.style.display = "none";
+    }
 }
 
 function makeOutputText(inputText) {
