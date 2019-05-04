@@ -64,23 +64,41 @@ function addSetDate(tdObj, objNodeValue, color) {
 
         btuAdd.onclick = function(){
             modal.style.display = "none";
-            var inputText = document.getElementById("txtField").value;
-            var para = document.createElement("p");
-            var outputText = document.createElement("input")
-            outputText.setAttribute("type", "text");
-            outputText.setAttribute("class", "outputText");
-            outputText.innerHTML = inputText;
-            para.appendChild(outputText);
-            console.log(outputText);//test
-            para.setAttribute("class", "schedule");
-            var btuX = document.createElement("button");
-            btuX.setAttribute("class", "xButton");
-            btuX.innerHTML = 'x';
-
-            para.appendChild(btuX);
-            tdObj.appendChild(para);
+            tdObj.appendChild(addSchedule());
         }
     }
+}
+
+function addSchedule() {
+    var inputText = document.getElementById("txtField").value;
+
+    return makeP(makeOutputText(inputText), makeButton());
+}
+
+function makeP(outputText, btuX){
+    var para = document.createElement("p");
+    para.setAttribute("class", "schedule");
+    para.appendChild(outputText);
+    para.appendChild(btuX);
+
+    return para;
+}
+
+function makeButton() {
+    var btuX = document.createElement("button");
+    btuX.setAttribute("class", "xButton");
+    btuX.innerHTML = 'x';
+
+    return btuX;
+}
+
+function makeOutputText(inputText) {
+    var outputText = document.createElement("input")
+    outputText.setAttribute("class", "outputText");
+    outputText.setAttribute("type", "text");
+    outputText.innerHTML = inputText;
+
+    return outputText;
 }
 
 function daysCount(year, month) {
