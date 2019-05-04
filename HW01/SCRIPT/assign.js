@@ -101,11 +101,17 @@ function makeButton() {
     return btuX;
 }
 
-function modifySchedule(btuX) {
+function modifySchedule(butX) {
     document.getElementById("modifyDate").valueAsDate = new Date();
     modifyModal.style.display = "block";
+    document.getElementById("save").onclick = function(){
+        modifyModal.style.display = "none";
+        var ancestor = butX.parentNode.parentNode;
+        var order = Array.from(ancestor.children).indexOf(butX.parentNode);
+        //document.getElementById("modifyOrder").innerText = order;
+    }
     document.getElementById("delete").onclick = function () {
-        btuX.parentNode.parentNode.removeChild(btuX.parentNode);
+        butX.parentNode.parentNode.removeChild(butX.parentNode);
         modifyModal.style.display = "none";
     }
 }
