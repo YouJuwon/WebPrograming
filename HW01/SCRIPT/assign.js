@@ -106,13 +106,22 @@ function modifySchedule(butX) {
     var order = Array.from(ancestor.children).indexOf(butX.parentNode);
     var mdate = new Date();
     mdate.setDate(ancestor.id);
-    document.getElementById("modifyDate").valueAsDate = mdate;
+    var modifyDate = document.getElementById("modifyDate");
+    modifyDate.valueAsDate = mdate;
     modifyModal.style.display = "block";
     var mOrder = document.getElementById("modifyOrder");
     mOrder.setAttribute("value", order+1);
 
     document.getElementById("save").onclick = function(){
+        var modifyDay;
         modifyModal.style.display = "none";
+        modifyDate.onchange = function () {
+            modifyDay = ((this.value.split("-"))[2]);
+            if (modifyDay < 10) modifyDay = modifyDay.split("0")[1];
+            console.log(this.value, modifyDay, document.getElementById(modifyDay));
+            document.getElementById(modifyDay).appendChild(butX.parentNode);
+            //document.getElementById(modifyDay).getElementsByTagName("td")[0].appendChild(butX.parentNode);
+        }
 
     }
 
