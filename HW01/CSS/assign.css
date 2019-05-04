@@ -43,6 +43,8 @@
 .xButton{
     background-color: lightgray;
     border: hidden;
+    float: right;
+    margin-right: 3px;
 }
 
 .schedule{
@@ -78,6 +80,7 @@ table {
     font-size: 15px;
     border-collapse: collapse;
     text-align: center;
+    width: 840px;
 }
 
 th {
