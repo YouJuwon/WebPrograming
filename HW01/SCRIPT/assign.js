@@ -106,13 +106,15 @@ function modifySchedule(butX) {
     var ancestor = butX.parentNode.parentNode;
     var obj = document.getElementById(ancestor.id);
     var order;
-    for (var i=0; i < obj.childNodes.length; i++){
+    var length =obj.childNodes.length-1;
+    for (var i=0; i <= length; i++){
         if (obj.childNodes[i] ==butX.parentNode) order = i;
     }
     var mdate = new Date();
     mdate.setDate(ancestor.id);
     var modifyDate = document.getElementById("modifyDate");
     var mOrder = document.getElementById("modifyOrder");
+    mOrder.setAttribute("max", length.toString());
     mOrder.value = order;
     modifyDate.valueAsDate = mdate;
     modifyModal.style.display = "block";
