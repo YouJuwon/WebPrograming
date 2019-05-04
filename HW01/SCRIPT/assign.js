@@ -12,7 +12,6 @@ window.onclick = function (event) {
         modifyModal.style.display = "none";
     }
 }
-/*year.setAttribute(id, day); 이렇게 id를 부여가능*/
 
 function initSetting() {
     let dateObj = new Date();
