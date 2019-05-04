@@ -71,6 +71,7 @@ function tdDbclick(tdObj, objNodeValue) {
     document.getElementById("add").onclick = function(){
         scheduleModal.style.display = "none";
         tdObj.appendChild(addSchedule());
+        document.getElementById("txtField").value = "";
     }
     document.getElementById("close").onclick = addClose;
 }
@@ -103,28 +104,42 @@ function makeButton() {
 
 function modifySchedule(butX) {
     var ancestor = butX.parentNode.parentNode;
-    var order = Array.from(ancestor.children).indexOf(butX.parentNode);
+    var obj = document.getElementById(ancestor.id);
+    var order;
+    for (var i=0; i < obj.childNodes.length; i++){
+        if (obj.childNodes[i] ==butX.parentNode) order = i;
+    }
     var mdate = new Date();
     mdate.setDate(ancestor.id);
     var modifyDate = document.getElementById("modifyDate");
     var mOrder = document.getElementById("modifyOrder");
+    mOrder.value = order;
     modifyDate.valueAsDate = mdate;
-    var modifyDay = modifyDate.value.split("-")[2];
-    if (modifyDay < 10) modifyDay = modifyDay.split("0")[1];
     modifyModal.style.display = "block";
-    mOrder.setAttribute("value", order+1);
 
     modifyDate.onchange = function () {
-        modifyDay = ((this.value.split("-"))[2]);
+        var modifyDay = ((this.value.split("-"))[2]);
         if (modifyDay < 10) modifyDay = modifyDay.split("0")[1];
+        document.getElementById("save").onclick = function(){
+            if (modifyDay != ancestor.id) document.getElementById(modifyDay).appendChild(butX.parentNode);
+            modifyModal.style.display = "none";
+        }
+    }
+    mOrder.onchange = function(){
+        var changeOrder = parseInt(mOrder.value);
+        document.getElementById("save").onclick = function () {
+            console.log(order, changeOrder, obj.childNodes);//test
+            if (order != changeOrder) {
+                var tempChild = obj.childNodes[order];
+                obj.removeChild(obj.childNodes[order]);
+                obj.insertBefore(tempChild, obj.childNodes[changeOrder]);
+            }
+
+            modifyModal.style.display = "none";
+        }
     }
 
-    document.getElementById("save").onclick = function(){
-        document.getElementById(modifyDay).appendChild(butX.parentNode);
-        modifyModal.style.display = "none";
 
-
-    }
 
     document.getElementById("delete").onclick = function () {
         butX.parentNode.parentNode.removeChild(butX.parentNode);
