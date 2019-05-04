@@ -17,16 +17,16 @@
 .schedule{
     border: 1px solid black;
     background-color: lightgray;
-    margin-left: 5%;
+    margin-left: 3px;
     margin-top: 2px;
     margin-bottom: 2px;
-    width: 85%;
+    width: 90%;
 }
 
 .outputText{
     margin-left: 2px;
     margin-right: 2px;
-    width: 70px;
+    width: 80px;
 }
 
 .modal {
@@ -49,7 +49,7 @@
     background-color: #ffffff;
     padding: 40px;
     border: 1px solid #888;
-    width: 20%; /* Could be more or less, depending on screen size */
+    width: 20%;
 }
 
 table {
