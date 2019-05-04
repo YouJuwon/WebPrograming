@@ -9,8 +9,17 @@
 
 <body>
 
+<div id="modifyModal" class="modal">
+    <div id="modal-add">
+        <p>일정 날짜 변경: <input type="date" id = "modifyDate"></p>
+        <p>일정 순서 변경: <input type="number" id = "modifyOrder"></p>
+        <input type="button" value="Save" id="save">
+        <input type="button" value="Delete" id="delete">
+    </div>
+</div>
+
 <div id="scheduleModal" class="modal">
-    <div class="modal-content">
+    <div id="modal-modify">
         <p id="scheduleText">日 일정추가</p>
         <input type="text" id = "txtField">
         </br>
