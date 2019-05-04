@@ -58,15 +58,18 @@ function addSetDate(tdObj, objNodeValue, color) {
     tdObj.style.backgroundColor = color;
 
     tdObj.ondblclick = function () {
-        scheduleModal.style.display ="block";
-        document.getElementById("scheduleText").innerHTML = objNodeValue + "日 일정추가";
-
-        document.getElementById("add").onclick = function(){
-            scheduleModal.style.display = "none";
-            tdObj.appendChild(addSchedule());
-        }
-        document.getElementById("close").onclick = addClose;
+        tdDbclick(tdObj, objNodeValue);
     }
+}
+
+function tdDbclick(tdObj, objNodeValue) {
+    scheduleModal.style.display ="block";
+    document.getElementById("scheduleText").innerHTML = objNodeValue + "日 일정추가";
+    document.getElementById("add").onclick = function(){
+        scheduleModal.style.display = "none";
+        tdObj.appendChild(addSchedule());
+    }
+    document.getElementById("close").onclick = addClose;
 }
 
 function addClose() {
