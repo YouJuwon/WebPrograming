@@ -38,7 +38,7 @@ function numberInit(dCount, date, day) {
             else {
                 tdObj = firstLine.item(j);
                 tdObj.innerHTML = count;
-                tdObj.setAttribute("id", "day"+count);
+                tdObj.setAttribute("id", count);
                 count++;
                 setBackgroundColor(date, tdObj);
             }
@@ -102,14 +102,20 @@ function makeButton() {
 }
 
 function modifySchedule(butX) {
-    document.getElementById("modifyDate").valueAsDate = new Date();
+    var ancestor = butX.parentNode.parentNode;
+    var order = Array.from(ancestor.children).indexOf(butX.parentNode);
+    var mdate = new Date();
+    mdate.setDate(ancestor.id);
+    document.getElementById("modifyDate").valueAsDate = mdate;
     modifyModal.style.display = "block";
+    var mOrder = document.getElementById("modifyOrder");
+    mOrder.setAttribute("value", order+1);
+
     document.getElementById("save").onclick = function(){
         modifyModal.style.display = "none";
-        var ancestor = butX.parentNode.parentNode;
-        var order = Array.from(ancestor.children).indexOf(butX.parentNode);
-        //document.getElementById("modifyOrder").innerText = order;
+
     }
+
     document.getElementById("delete").onclick = function () {
         butX.parentNode.parentNode.removeChild(butX.parentNode);
         modifyModal.style.display = "none";
