@@ -88,6 +88,9 @@ function makeButton() {
     var btuX = document.createElement("button");
     btuX.setAttribute("class", "xButton");
     btuX.innerHTML = 'x';
+    btuX.onclick = function () {
+        btuX.parentNode.parentNode.removeChild(btuX.parentNode);
+    }
 
     return btuX;
 }
@@ -96,7 +99,7 @@ function makeOutputText(inputText) {
     var outputText = document.createElement("input")
     outputText.setAttribute("class", "outputText");
     outputText.setAttribute("type", "text");
-    outputText.innerHTML = inputText;
+    outputText.value= inputText;
 
     return outputText;
 }
